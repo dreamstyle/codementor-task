@@ -1,5 +1,6 @@
 import React from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
+import Nav from './styles/TabStyle'
 
 const Tab = () => {
   const history = useHistory()
@@ -10,7 +11,7 @@ const Tab = () => {
   }
 
   return (
-    <nav>
+    <Nav>
       <ul>
         <li>
           <button
@@ -31,7 +32,7 @@ const Tab = () => {
           </button>
         </li>
       </ul>
-    </nav>
+    </Nav>
   )
 }
 
