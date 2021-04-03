@@ -1,28 +1,20 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { selectList, fetchSearchResult } from './slice'
 import ListItem from '../../components/ListItem'
 import Root from './style'
 
 const Search = () => {
-  const list = [
-    {
-      id: 1753,
-      title: 'Why React.js Trumps Angular 2 (and 1)',
-      author_name: 'Tendai Mutunhire',
-      categories: ['reactjs', 'AngularJS', 'angular2'],
-    },
-    {
-      id: 794,
-      title: 'Building a Mailbox Editor using ReactJS and Bootstrap',
-      author_name: 'gdangelo',
-      categories: ['reactjs', 'JavaScript', 'bootstrap', 'jsx'],
-    },
-    {
-      id: 1712,
-      title: 'Use React-Router with Ease',
-      author_name: 'Kayode Adeniyi',
-      categories: ['reactjs', 'react-router', 'JavaScript'],
-    },
-  ]
+  const list = useSelector(selectList)
+  const dispatch = useDispatch()
+
+  // TODO: Use onChange event (debounce!)
+  const handleKeyUp = (e) => {
+    if (e.key === 'Enter') {
+      const query = e.target.value
+      dispatch(fetchSearchResult(query))
+    }
+  }
 
   return (
     <Root>
@@ -30,6 +22,7 @@ const Search = () => {
         className="input-search"
         type="text"
         placeholder="Please enter the keyword"
+        onKeyUp={(e) => handleKeyUp(e)}
       />
       <ul>
         {list.length > 0 ? (
