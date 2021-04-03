@@ -44,11 +44,11 @@ const Search = () => {
       <ul>
         {searched ? (
           loading ? (
-            <p>Loading...</p>
+            <p className="message">Loading...</p>
           ) : list.length > 0 ? (
             list.map((item) => <ListItem item={item} key={item.id} />)
           ) : (
-            <p>No result</p>
+            <p className="message">No result</p>
           )
         ) : null}
       </ul>
