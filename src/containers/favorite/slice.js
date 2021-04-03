@@ -3,19 +3,20 @@ import { createSlice } from '@reduxjs/toolkit'
 export const favoriteSlice = createSlice({
   name: 'favorite',
   initialState: {
-    list: [
-      {
-        id: 1753,
-        title: 'Why React.js Trumps Angular 2 (and 1)',
-        author_name: 'Tendai Mutunhire',
-        categories: ['reactjs', 'AngularJS', 'angular2'],
-      },
-    ],
+    list: [],
   },
-  reducers: {},
+  reducers: {
+    addFavorite: (state, { payload }) => {
+      state.list.push(payload)
+    },
+    removeFavorite: (state, { payload: id }) => {
+      const removeIndex = state.list.findIndex((el) => el.id === id)
+      state.list.splice(removeIndex, 1)
+    },
+  },
 })
 
-export const {} = favoriteSlice.actions
+export const { addFavorite, removeFavorite } = favoriteSlice.actions
 
 export const selectList = (state) => state.favorite.list
 
