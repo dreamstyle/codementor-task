@@ -5,6 +5,7 @@ import {
   selectList,
   selectLoading,
   selectQuery,
+  selectSearched,
   addQuery,
   fetchSearchResult,
 } from './slice'
@@ -15,6 +16,7 @@ const Search = () => {
   const list = useSelector(selectList)
   const loading = useSelector(selectLoading)
   const query = useSelector(selectQuery)
+  const searched = useSelector(selectSearched)
   const dispatch = useDispatch()
 
   const debouncedFetch = useCallback(
@@ -40,13 +42,15 @@ const Search = () => {
         onChange={(e) => handleChange(e)}
       />
       <ul>
-        {loading ? (
-          <p>Loading...</p>
-        ) : list.length > 0 ? (
-          list.map((item) => <ListItem item={item} key={item.id} />)
-        ) : (
-          <p>No result</p>
-        )}
+        {searched ? (
+          loading ? (
+            <p>Loading...</p>
+          ) : list.length > 0 ? (
+            list.map((item) => <ListItem item={item} key={item.id} />)
+          ) : (
+            <p>No result</p>
+          )
+        ) : null}
       </ul>
     </Root>
   )

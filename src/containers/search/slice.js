@@ -21,6 +21,7 @@ export const searchSlice = createSlice({
   name: 'search',
   initialState: {
     value: 0,
+    searched: false,
     loading: false,
     query: '',
     list: [],
@@ -34,6 +35,7 @@ export const searchSlice = createSlice({
     [fetchSearchResult.pending]: (state, action) => {
       console.log('pending')
       state.loading = true
+      state.searched = true
     },
     [fetchSearchResult.fulfilled]: (state, action) => {
       console.log('fulfilled')
@@ -52,5 +54,6 @@ export const { addQuery } = searchSlice.actions
 export const selectList = (state) => state.search.list
 export const selectLoading = (state) => state.search.loading
 export const selectQuery = (state) => state.search.query
+export const selectSearched = (state) => state.search.searched
 
 export default searchSlice.reducer
