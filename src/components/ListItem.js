@@ -10,6 +10,9 @@ const ListItem = ({ item }) => {
       {item.categories.map((category) => {
         return <Tag category={category} key={category} />
       })}
+      <button className="btn btn-saved">Saved</button>
+      <button className="btn btn-remove">Unsave</button>
+      {/* <button className="btn btn-add">Save</button> */}
     </Item>
   )
 }
