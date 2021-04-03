@@ -1,20 +1,35 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { selectList, selectLoading, fetchSearchResult } from './slice'
+import { debounce } from 'lodash'
+import {
+  selectList,
+  selectLoading,
+  selectQuery,
+  selectSearched,
+  addQuery,
+  fetchSearchResult,
+} from './slice'
 import ListItem from '../../components/ListItem'
 import Root from './style'
 
 const Search = () => {
   const list = useSelector(selectList)
   const loading = useSelector(selectLoading)
+  const query = useSelector(selectQuery)
+  const searched = useSelector(selectSearched)
   const dispatch = useDispatch()
 
-  // TODO: Use onChange event (debounce!)
-  const handleKeyUp = (e) => {
-    if (e.key === 'Enter') {
-      const query = e.target.value
+  const debouncedFetch = useCallback(
+    debounce((query) => {
       dispatch(fetchSearchResult(query))
-    }
+      dispatch(addQuery(query))
+    }, 600),
+    []
+  )
+
+  const handleChange = (e) => {
+    const query = e.target.value
+    debouncedFetch(query)
   }
 
   return (
@@ -23,16 +38,19 @@ const Search = () => {
         className="input-search"
         type="text"
         placeholder="Please enter the keyword"
-        onKeyUp={(e) => handleKeyUp(e)}
+        defaultValue={query}
+        onChange={(e) => handleChange(e)}
       />
       <ul>
-        {loading ? (
-          <p>Loading...</p>
-        ) : list.length > 0 ? (
-          list.map((item) => <ListItem item={item} key={item.id} />)
-        ) : (
-          <p>No result</p>
-        )}
+        {searched ? (
+          loading ? (
+            <p className="message">Loading...</p>
+          ) : list.length > 0 ? (
+            list.map((item) => <ListItem item={item} key={item.id} />)
+          ) : (
+            <p className="message">No result</p>
+          )
+        ) : null}
       </ul>
     </Root>
   )

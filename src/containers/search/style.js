@@ -11,6 +11,12 @@ const Root = styled.main`
       color: #999;
     }
   }
+
+  .message {
+    margin-top: 24px;
+    color: #999;
+    font-size: 14px;
+  }
 `
 
 export default Root

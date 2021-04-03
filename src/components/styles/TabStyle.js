@@ -3,6 +3,7 @@ import styled from 'styled-components'
 const Nav = styled.nav`
   background-color: #efefef;
   padding-top: 24px;
+  padding-left: 24px;
 
   li {
     display: inline-block;
