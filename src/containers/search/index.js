@@ -9,7 +9,7 @@ import {
   addQuery,
   fetchSearchResult,
 } from './slice'
-import ListItem from '../../components/ListItem'
+import ArticleList from '../../components/ArticleList'
 import Root from './style'
 
 const Search = () => {
@@ -41,17 +41,14 @@ const Search = () => {
         defaultValue={query}
         onChange={(e) => handleChange(e)}
       />
-      <ul>
-        {searched ? (
-          loading ? (
-            <p className="message">Loading...</p>
-          ) : list.length > 0 ? (
-            list.map((item) => <ListItem item={item} key={item.id} />)
-          ) : (
-            <p className="message">No result</p>
-          )
-        ) : null}
-      </ul>
+      {searched &&
+        (loading ? (
+          <p className="message">Loading...</p>
+        ) : list.length > 0 ? (
+          <ArticleList list={list} />
+        ) : (
+          <p className="message">No result</p>
+        ))}
     </Root>
   )
 }
