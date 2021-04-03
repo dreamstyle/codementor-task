@@ -1,18 +1,14 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { selectList } from './slice'
-import ListItem from '../../components/ListItem'
+import ArticleList from '../../components/ArticleList'
 
 const Favorite = () => {
   const list = useSelector(selectList)
 
   return (
     <main>
-      <ul>
-        {list.map((item) => (
-          <ListItem item={item} key={item.id} />
-        ))}
-      </ul>
+      <ArticleList list={list} />
     </main>
   )
 }
