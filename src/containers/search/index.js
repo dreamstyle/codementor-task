@@ -1,17 +1,27 @@
 import React, { useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { debounce } from 'lodash'
-import { selectList, selectLoading, fetchSearchResult } from './slice'
+import {
+  selectList,
+  selectLoading,
+  selectQuery,
+  addQuery,
+  fetchSearchResult,
+} from './slice'
 import ListItem from '../../components/ListItem'
 import Root from './style'
 
 const Search = () => {
   const list = useSelector(selectList)
   const loading = useSelector(selectLoading)
+  const query = useSelector(selectQuery)
   const dispatch = useDispatch()
 
   const debouncedFetch = useCallback(
-    debounce((query) => dispatch(fetchSearchResult(query)), 600),
+    debounce((query) => {
+      dispatch(fetchSearchResult(query))
+      dispatch(addQuery(query))
+    }, 600),
     []
   )
 
@@ -26,6 +36,7 @@ const Search = () => {
         className="input-search"
         type="text"
         placeholder="Please enter the keyword"
+        defaultValue={query}
         onChange={(e) => handleChange(e)}
       />
       <ul>

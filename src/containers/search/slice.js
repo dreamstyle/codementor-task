@@ -22,9 +22,14 @@ export const searchSlice = createSlice({
   initialState: {
     value: 0,
     loading: false,
+    query: '',
     list: [],
   },
-  reducers: {},
+  reducers: {
+    addQuery(state, { payload: query }) {
+      state.query = query
+    },
+  },
   extraReducers: {
     [fetchSearchResult.pending]: (state, action) => {
       console.log('pending')
@@ -42,9 +47,10 @@ export const searchSlice = createSlice({
   },
 })
 
-export const {} = searchSlice.actions
+export const { addQuery } = searchSlice.actions
 
 export const selectList = (state) => state.search.list
 export const selectLoading = (state) => state.search.loading
+export const selectQuery = (state) => state.search.query
 
 export default searchSlice.reducer
