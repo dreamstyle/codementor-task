@@ -12,10 +12,7 @@ const Item = styled.li`
   }
 
   &:hover {
-    .btn-add {
-      display: block;
-    }
-
+    .btn-add,
     .btn-remove {
       display: block;
     }
@@ -47,28 +44,11 @@ const Item = styled.li`
     top: 50%;
     right: 0;
     transform: translateY(-50%);
-    padding: 4px 8px;
-    border-radius: 2px;
   }
 
-  .btn-add {
-    display: none;
-    border: 1px solid #ccc;
-    background-color: #fff;
-  }
-
-  .btn-saved {
-    border: none;
-    background-color: #ccc;
-    color: #fff;
-  }
-
+  .btn-add,
   .btn-remove {
     display: none;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    color: #000;
-    font-size: 14px;
   }
 `
 
