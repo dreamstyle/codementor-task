@@ -1,15 +1,10 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import {
-  selectList,
-  addFavorite,
-  removeFavorite,
-} from '../containers/favorite/slice'
+import { useDispatch } from 'react-redux'
+import { addFavorite, removeFavorite } from '../containers/favorite/slice'
 import Tag from './Tag'
 import Item from './styles/ListItemStyle'
 
-const ListItem = ({ item }) => {
-  const list = useSelector(selectList)
+const ListItem = ({ item, favorite }) => {
   const dispatch = useDispatch()
 
   const handleClickAdd = (item) => {
@@ -27,7 +22,7 @@ const ListItem = ({ item }) => {
       {item.categories.map((category) => {
         return <Tag category={category} key={category} />
       })}
-      {list.some((el) => item.id === el.id) ? (
+      {favorite ? (
         <React.Fragment>
           <button className="btn btn-saved">Saved</button>
           <button
