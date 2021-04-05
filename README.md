@@ -1,68 +1,83 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Search Codementor
 
-## Available Scripts
+A simple search for articles from Codementor community. Powered by Algolia.
 
-In the project directory, you can run:
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0d42e5fe-1a39-44da-8f77-eac714fc3294/deploy-status)](https://app.netlify.com/sites/algolia-search-exerise/deploys)
+
+## Project Setup
 
 ### `npm start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+_Remember to add development environment variables in `.env.local`_
+
+```
+REACT_APP_ALGOLIA_APLICATION_ID = <ALGOLIA_APLICATION_ID>
+REACT_APP_ALGOLIA_APLICATION_KEY = <ALGOLIA_APLICATION_KEY>
+REACT_APP_ALGOLIA_INDEX_NAME = <ALGOLIA_INDEX_NAME>
+```
 
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Tests including unit tests for components.
+
+_Remember to add development environment variables in .env.test.local_
+
+```
+REACT_APP_ALGOLIA_APLICATION_ID = <ALGOLIA_APLICATION_ID>
+REACT_APP_ALGOLIA_APLICATION_KEY = <ALGOLIA_APLICATION_KEY>
+REACT_APP_ALGOLIA_INDEX_NAME = <ALGOLIA_INDEX_NAME>
+```
+
+Runs `npm test -- --coverage` for the coverage report.
 
 ### `npm run build`
 
 Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+After running it, runs `serve -s build` to serve it with a static server.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The working app is running under [https://search-codementor.netlify.app](https://search-codementor.netlify.app)
 
-### `npm run eject`
+## Features
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- A tabs component allowing the user to switch between the **Search** and **Favorite** page with route changes.
+- It should provide text input to enter a keyword.
+- After entering the keyword, it should list the matched posts. The post row should contain at least the **title**, **author name**, **categories**, and **saved state**.
+- Display **No result** if no result found from Algolia
+- The **Save/Unasve** button should display when hovering on the post. User can click to **save/unsave** both on the **Search** and **Favorite** page.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Tech Stack
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- create-react-app (CRA)
+- React Hook
+- Redux
+- Styled Component
+- Algolia
+- React-testing-library
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Folder Structure
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
+src/
+├── app/
+│   └── store.js
+├── components/
+│   ├── ArticleList/
+│   ├── Button/
+│   ├── InputSearch/
+│   ├── ListItem/
+│   ├── NavBar/
+│   └── Tag/
+├── containers/
+│   ├── favorite/
+│   └── search/
+├── utils/
+│   └── algolia.js
+├── app.js
+└── index.js
+```
