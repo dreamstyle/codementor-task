@@ -9,6 +9,7 @@ import {
   addQuery,
   fetchSearchResult,
 } from './slice'
+import InputSearch from '../../components/InputSearch'
 import ArticleList from '../../components/ArticleList'
 import Root from './style'
 
@@ -34,20 +35,18 @@ const Search = () => {
 
   return (
     <Root>
-      <input
-        className="input-search"
-        type="text"
-        placeholder="Please enter the keyword"
-        defaultValue={query}
-        onChange={(e) => handleChange(e)}
-      />
+      <InputSearch initValue={query} handleChange={handleChange} />
       {searched &&
         (loading ? (
-          <p className="message">Loading...</p>
+          <p data-testid="loading" className="message">
+            Loading...
+          </p>
         ) : list.length > 0 ? (
           <ArticleList list={list} />
         ) : (
-          <p className="message">No result</p>
+          <p data-testid="no-result" className="message">
+            No result
+          </p>
         ))}
     </Root>
   )
