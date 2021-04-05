@@ -17,7 +17,7 @@ const ListItem = ({ item, favorite }) => {
   }
 
   return (
-    <Item>
+    <Item data-testid="list-item">
       <h1 className="title">{item.title}</h1>
       <span className="author">{item.author_name}</span>
       {item.categories.map((category) => {

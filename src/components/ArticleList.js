@@ -7,7 +7,7 @@ const ArticleList = ({ list }) => {
   const favoriteList = useSelector(selectList)
 
   return (
-    <ul>
+    <ul data-testid="ul">
       {list.map((item) => (
         <ListItem
           item={item}
