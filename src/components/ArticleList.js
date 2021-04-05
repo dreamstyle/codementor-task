@@ -1,11 +1,19 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { selectList } from '../containers/favorite/slice'
 import ListItem from './ListItem'
 
 const ArticleList = ({ list }) => {
+  const favoriteList = useSelector(selectList)
+
   return (
     <ul>
       {list.map((item) => (
-        <ListItem item={item} key={item.id} />
+        <ListItem
+          item={item}
+          favorite={favoriteList.some((el) => el.id === item.id)}
+          key={item.id}
+        />
       ))}
     </ul>
   )
