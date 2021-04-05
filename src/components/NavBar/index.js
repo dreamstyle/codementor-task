@@ -1,8 +1,8 @@
 import React from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
-import Nav from './styles/TabStyle'
+import Nav from './style'
 
-const Tab = () => {
+const NavBar = () => {
   const history = useHistory()
   const { pathname } = useLocation()
 
@@ -38,4 +38,4 @@ const Tab = () => {
   )
 }
 
-export default Tab
+export default NavBar

@@ -1,5 +1,5 @@
 import React from 'react'
-import StyledButton from './styles/ButtonStyle'
+import StyledButton from './style'
 
 const Button = ({ parentClass, type, size, text, handleClick }) => {
   const className = () => {
