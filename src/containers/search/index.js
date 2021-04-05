@@ -20,6 +20,7 @@ const Search = () => {
   const searched = useSelector(selectSearched)
   const dispatch = useDispatch()
 
+  // eslint-disable-next-line
   const debouncedFetch = useCallback(
     debounce((query) => {
       dispatch(fetchSearchResult(query))
