@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import Button from './Button'
+import Button from './index'
 import '@testing-library/jest-dom'
 
 const setup = () => {

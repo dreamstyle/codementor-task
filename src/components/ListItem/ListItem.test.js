@@ -2,8 +2,8 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import store from '../app/store'
-import ListItem from './ListItem'
+import store from '../../app/store'
+import ListItem from './index'
 
 const favorite = true
 const item = {

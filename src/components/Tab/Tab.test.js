@@ -4,8 +4,8 @@ import { Provider } from 'react-redux'
 import { createMemoryHistory } from 'history'
 import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import store from '../app/store'
-import Tab from './Tab'
+import store from '../../app/store'
+import Tab from './index'
 
 const setup = () => {
   const history = createMemoryHistory()

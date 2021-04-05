@@ -1,5 +1,5 @@
 import React from 'react'
-import Input from './styles/InputSearchStyle'
+import Input from './style'
 
 const InputSearch = ({ initValue, handleChange }) => {
   return (

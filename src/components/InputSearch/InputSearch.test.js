@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import InputSearch from './InputSearch'
+import InputSearch from './index'
 
 describe('<InputSearch />', () => {
   it('should render input', () => {

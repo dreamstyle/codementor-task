@@ -1,5 +1,5 @@
 import React from 'react'
-import Root from './styles/TagStyle'
+import Root from './style'
 
 const Tag = ({ category }) => {
   return <Root data-testid="tag">{category}</Root>

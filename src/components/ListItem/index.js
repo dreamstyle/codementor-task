@@ -1,9 +1,9 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { addFavorite, removeFavorite } from '../containers/favorite/slice'
-import Tag from './Tag'
-import Button from './Button'
-import Item from './styles/ListItemStyle'
+import { addFavorite, removeFavorite } from '../../containers/favorite/slice'
+import Tag from '../Tag'
+import Button from '../Button'
+import Item from './style'
 
 const ListItem = ({ item, favorite }) => {
   const dispatch = useDispatch()

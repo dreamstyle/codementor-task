@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { selectList } from '../containers/favorite/slice'
-import ListItem from './ListItem'
+import { selectList } from '../../containers/favorite/slice'
+import ListItem from '../ListItem'
 
 const ArticleList = ({ list }) => {
   const favoriteList = useSelector(selectList)
