@@ -15,7 +15,7 @@ const setup = () => {
   }
 }
 
-describe('<Search />', () => {
+describe('<Favorite />', () => {
   it('should render article list', () => {
     const { getByTestId } = setup()
     expect(getByTestId('ul')).toBeInTheDocument()
