@@ -15,6 +15,7 @@ const Tab = () => {
       <ul>
         <li>
           <button
+            data-testid="search-tab"
             className={
               pathname === '/' || pathname === '/search' ? 'is-active' : null
             }
@@ -25,6 +26,7 @@ const Tab = () => {
         </li>
         <li>
           <button
+            data-testid="favorite-tab"
             className={pathname === '/favorite' ? 'is-active' : null}
             onClick={() => handleClick('/favorite')}
           >

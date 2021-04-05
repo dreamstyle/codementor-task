@@ -11,7 +11,11 @@ const Button = ({ parentClass, type, size, text, handleClick }) => {
   }
 
   return (
-    <StyledButton className={className()} onClick={handleClick}>
+    <StyledButton
+      data-testid="btn"
+      className={className()}
+      onClick={handleClick}
+    >
       {text}
     </StyledButton>
   )
