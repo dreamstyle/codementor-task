@@ -1,14 +1,14 @@
 import React from 'react'
 import './App.css'
 import { Switch, Route } from 'react-router-dom'
-import Tab from './components/Tab'
+import NavBar from './components/NavBar'
 import Search from './containers/search'
 import Favorite from './containers/favorite'
 
 function App() {
   return (
     <div className="App">
-      <Tab />
+      <NavBar />
       <Switch>
         <Route exact path="/" component={Search} />
         <Route path="/search" component={Search} />

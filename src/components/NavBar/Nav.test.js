@@ -5,14 +5,14 @@ import { createMemoryHistory } from 'history'
 import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import store from '../../app/store'
-import Tab from './index'
+import NavBar from './index'
 
 const setup = () => {
   const history = createMemoryHistory()
   const utils = render(
     <Provider store={store}>
       <Router history={history}>
-        <Tab />
+        <NavBar />
       </Router>
     </Provider>
   )
@@ -22,7 +22,7 @@ const setup = () => {
   }
 }
 
-describe('<Tab />', () => {
+describe('<NavBar />', () => {
   it('should trigger click event when clicking the tab', () => {
     const { getByTestId } = setup()
     global.onclick = jest.fn()
@@ -49,7 +49,7 @@ describe('<Tab />', () => {
     const { getByTestId } = render(
       <Provider store={store}>
         <Router history={history}>
-          <Tab />
+          <NavBar />
         </Router>
       </Provider>
     )
