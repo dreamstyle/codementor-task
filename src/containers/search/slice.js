@@ -1,6 +1,14 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import Algolia from '../../utils/algolia'
 
+export const initialState = {
+  value: 0,
+  searched: false,
+  loading: false,
+  query: '',
+  list: [],
+}
+
 export const fetchSearchResult = createAsyncThunk(
   'search/fetchSearchResult',
   async (query, { rejectWithValue }) => {
@@ -18,13 +26,7 @@ export const fetchSearchResult = createAsyncThunk(
 
 export const searchSlice = createSlice({
   name: 'search',
-  initialState: {
-    value: 0,
-    searched: false,
-    loading: false,
-    query: '',
-    list: [],
-  },
+  initialState,
   reducers: {
     addQuery(state, { payload: query }) {
       state.query = query
