@@ -42,6 +42,7 @@
     "singleQuote": true
   },
   "devDependencies": {
-    "@testing-library/react": "^9.5.0"
+    "@testing-library/react": "^9.5.0",
+    "redux-mock-store": "^1.5.4"
   }
 }
